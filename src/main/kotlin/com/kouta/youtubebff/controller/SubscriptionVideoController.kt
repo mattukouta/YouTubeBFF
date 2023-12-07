@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class SubscriptionVideoController {
     @GetMapping("/test")
     fun getGreetingByQuery(
-        @RequestParam(
-            name = "name", required = false, defaultValue = "world"
-        ) name: String
+        @RequestParam(name = "name", required = false, defaultValue = "world") name: String
     ) = SubscriptionVideo.Response(
         title = name
     )
