@@ -15,7 +15,7 @@ class SubscriptionController {
     private lateinit var youTubeApiClient: YouTubeApiClient
 
     companion object {
-        const val DATABASE_SIZE = 5
+        const val DEFAULT_RESULT_COUNT = 5
     }
     @GetMapping("/subscriptions")
     fun getSubscriptions(
@@ -23,16 +23,16 @@ class SubscriptionController {
         accessToken: String,
     ): Mono<Subscription.Response> {
         val params = Request(
-            part = listOf(
+            parts = listOf(
                 Request.Part.SNIPPET
             ),
             filter = Request.Filter.Mine,
             forChannelId = listOf(),
-            maxResults = DATABASE_SIZE,
+            maxResults = DEFAULT_RESULT_COUNT,
             order = Request.Order.RELEVANCE,
             pageToken = null
         ).toQueryMap()
 
-        return youTubeApiClient.getSubscriptions(params)
+        return youTubeApiClient.getSubscriptions(params, accessToken)
     }
 }

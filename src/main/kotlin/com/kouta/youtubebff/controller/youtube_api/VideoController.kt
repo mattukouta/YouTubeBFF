@@ -43,6 +43,6 @@ class VideoController {
             pageToken = null
         ).toQueryMap()
 
-        return youTubeApiClient.getVideos(params)
+        return youTubeApiClient.getVideos(params, accessToken)
     }
 }

@@ -5,7 +5,8 @@ class YouTubeRss {
         val feeds: List<Feed>
     ) {
         data class Feed(
-            val videoId: String
+            val videoId: String,
+            val updated: Long
         )
     }
 }

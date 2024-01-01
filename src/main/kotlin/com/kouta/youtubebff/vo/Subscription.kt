@@ -60,7 +60,7 @@ class Subscription {
     }
 
     data class Request(
-        val part: List<Part>,
+        val parts: List<Part>,
         val filter: Filter,
         val forChannelId: List<String> = listOf(),
         val maxResults: Int = 5,
@@ -91,7 +91,7 @@ class Subscription {
         fun toQueryMap(): MultiValueMap<String, String> {
             val params = LinkedMultiValueMap<String, String>()
 
-            params["part"] = part.joinToString(",") { it.value }
+            params["part"] = parts.joinToString(",") { it.value }
 
             when (filter) {
                 is Filter.ChannelId -> params["channelId"] = filter.channelId

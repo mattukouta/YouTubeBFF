@@ -1,6 +1,5 @@
 package com.kouta.youtubebff.vo
 
-import com.kouta.youtubebff.vo.enums.LiveBroadcastContent
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.util.MultiValueMap
 
@@ -25,7 +24,7 @@ class Video {
             sealed class Chart(override val value: String) : Filter(value) {
                 data object MostPopular : Chart("mostPopular")
             }
-            data class Id(val videoId: List<String>) : Filter(videoId.joinToString(","))
+            data class Id(val videoIds: List<String>) : Filter(videoIds.joinToString(","))
             sealed class MyRating(override val value: String) : Filter(value) {
                 data object Dislike : MyRating("dislike")
                 data object Like : MyRating("like")
@@ -82,7 +81,7 @@ class Video {
                 val channelTitle: String,
                 val tags: List<String>?,
                 val categoryId: String,
-                val liveBroadcastContent: LiveBroadcastContent
+                val liveBroadcastContent: String
             ) {
                 data class Thumbnails(
                     val default: Thumbnail?,
